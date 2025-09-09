@@ -2,7 +2,7 @@ package com.example.weatherapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
-import com.example.weatherapp.fakes.FakeWeatherResponse
+import com.example.weatherapp.fakeData.FakeWeatherResponse
 import com.example.weatherapp.data.data_source.db.WeatherDao
 import com.example.weatherapp.data.data_source.db.WeatherDatabase
 import com.example.getOrAwaitValueTest

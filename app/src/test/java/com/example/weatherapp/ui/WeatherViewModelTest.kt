@@ -1,8 +1,8 @@
 package com.example.weatherapp.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.weatherapp.fakes.FakeRepo
-import com.example.weatherapp.fakes.FakeWeatherResponse
+import com.example.weatherapp.fakeData.FakeRepo
+import com.example.weatherapp.fakeData.FakeWeatherResponse
 import com.example.weatherapp.getOrAwaitValueTest
 import com.example.weatherapp.presentation.ui.WeatherViewModel
 import org.junit.Before

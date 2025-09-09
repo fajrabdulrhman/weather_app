@@ -1,4 +1,4 @@
-package com.example.weatherapp.fakes
+package com.example.weatherapp.fakeData
 
 import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
 import com.example.weatherapp.domain.models.Condition

@@ -1,7 +1,4 @@
-package com.example.weatherapp.fakes
-
-
-import com.example.weatherapp.data.data_source.db.ktor.dto.SearchResponseItem
+package com.example.weatherapp.fakeData
 
 
 //object FakeSearchResponse {
