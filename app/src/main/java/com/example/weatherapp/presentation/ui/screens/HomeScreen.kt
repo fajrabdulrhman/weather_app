@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -37,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 import com.example.weatherapp.domain.models.Forecastday
 import com.example.weatherapp.domain.models.Hour
 import com.example.weatherapp.presentation.ui.WeatherViewModel
@@ -67,7 +68,9 @@ fun HomeScreen(navController: NavController,viewModel: WeatherViewModel) {
         }
         is Resource.Loading -> {
             val weather = (weatherState as Resource.Loading<WeatherResponseDto>).data
-            ScreenContent(weather,navController)
+
+
+            Loader()
         }
         is Resource.Success -> {
             val weather = (weatherState as Resource.Success<WeatherResponseDto>).data
@@ -75,6 +78,19 @@ fun HomeScreen(navController: NavController,viewModel: WeatherViewModel) {
         }
     }
 }
+@Composable
+fun Loader() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator(
+            color = Color(0xFFBDA6F5)
+        )
+    }
+}
+
 
 fun formatLocalTime(localtime: String, shortMonth: Boolean = false): String {
     if (localtime.isEmpty()) return ""

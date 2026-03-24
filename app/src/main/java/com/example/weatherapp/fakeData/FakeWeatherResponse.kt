@@ -1,6 +1,6 @@
 package com.example.weatherapp.fakeData
 
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 import com.example.weatherapp.domain.models.Condition
 import com.example.weatherapp.domain.models.Current
 import com.example.weatherapp.domain.models.Day

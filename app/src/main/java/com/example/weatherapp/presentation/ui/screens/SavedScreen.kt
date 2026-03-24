@@ -22,6 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -114,7 +116,7 @@ fun SavedScreen(navController: NavController) {
                         .height(700.dp)
                 ) {
                     LazyColumn {
-                        items(savedWeather.size) { index ->
+                        items( savedWeather.size) { index ->
                             Spacer(Modifier.height(20.dp))
                             SavedCitesItem(city = savedWeather[index], navController)
                         }
@@ -149,12 +151,23 @@ fun SavedScreen(navController: NavController) {
 
                     OutlinedTextField(
                         value = query,
+                        maxLines = 1,
 
                         onValueChange = {
-                            query = it
-                            if (it.length > 2) {
+
+
+                                query = it ?: ""
+                                if (it.length > 2) {
+                                    viewModel.searchWeather(it)
+                                }
+                            if (it.length<2)
+                            {
                                 viewModel.searchWeather(it)
                             }
+
+
+
+
                         },
                         placeholder = { Text("Search for a city") },
                         modifier = Modifier
@@ -214,11 +227,11 @@ fun SavedScreen(navController: NavController) {
                         }
 
                         is Resource.Error -> {
-                            Text("Error: ${state.message}", color = Color.Red)
+                          // Text("Error: ${state.message}", color = Color.Red)
                         }
 
                         is Resource.Loading -> {
-                            CircularProgressIndicator()
+                         Loader()
                         }
 
                         else -> {}

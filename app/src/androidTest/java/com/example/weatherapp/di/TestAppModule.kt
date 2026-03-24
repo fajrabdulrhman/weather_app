@@ -3,7 +3,7 @@ package com.example.weatherapp.di
 import android.content.Context
 import androidx.room.Room
 import com.example.weatherapp.fakeData.FakeRepo
-import com.example.weatherapp.data.data_source.db.WeatherDatabase
+import com.example.weatherapp.data.data_source.local.WeatherDatabase
 import com.example.weatherapp.domain.di.AppModule
 import com.example.weatherapp.data.repository.WeatherRepo
 import dagger.Module

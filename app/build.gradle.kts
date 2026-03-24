@@ -6,9 +6,6 @@ plugins {
     alias(libs.plugins.androidx.navigation.safe.args)
 
     kotlin("plugin.serialization")
-//    id("org.jetbrains.kotlin.kapt")
-//    id("kotlin-parcelize")
-//    alias(libs.plugins.dagger.hilt.android)
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
@@ -93,6 +90,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.hilt.navigation.compose)
+
     implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     //implementation(libs.lifecycle.livedata.compose)

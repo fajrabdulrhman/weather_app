@@ -1,18 +1,18 @@
 package com.example.weatherapp.data.repository
 
 import android.annotation.SuppressLint
-import androidx.compose.runtime.State
 import androidx.lifecycle.LiveData
-import com.example.weatherapp.data.data_source.db.WeatherDatabase
-import com.example.weatherapp.data.data_source.db.ktor.KtorApi
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.local.WeatherDatabase
+import com.example.weatherapp.data.data_source.remote.ktor.KtorApi
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 
-import com.example.weatherapp.data.data_source.db.ktor.dto.SearchResponseItem
+import com.example.weatherapp.data.data_source.remote.ktor.dto.SearchResponseItem
 import com.example.weatherapp.domain.models.WeatherResponse
 import com.example.weatherapp.presentation.util.Resource
 import javax.inject.Inject
 
 class WeatherRepository @Inject constructor (
+
     private val db:WeatherDatabase,
    //private val weatherApi: WeatherApi,
     private val weatherApi: KtorApi

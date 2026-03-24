@@ -4,11 +4,11 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 
 import com.example.weatherapp.domain.models.WeatherResponse
 import com.example.weatherapp.data.repository.WeatherRepo
-import com.example.weatherapp.data.data_source.db.ktor.dto.SearchResponseItem
+import com.example.weatherapp.data.data_source.remote.ktor.dto.SearchResponseItem
 
 import com.example.weatherapp.presentation.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

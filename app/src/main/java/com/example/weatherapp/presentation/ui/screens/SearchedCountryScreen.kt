@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -39,7 +40,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.weatherapp.R
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 import com.example.weatherapp.domain.models.Forecastday
 import com.example.weatherapp.domain.models.Hour
 import com.example.weatherapp.domain.models.WeatherResponse
@@ -75,7 +76,7 @@ fun SearchedCountryScreen (lat: Double?, lon: Double?,navController: NavControll
         }
         is Resource.Loading -> {
             val weather = (weatherState as Resource.Loading<WeatherResponseDto>).data
-            ScreenContent2(weather,navController)
+            Loader()
         }
         is Resource.Success -> {
             val weather = (weatherState as Resource.Success<WeatherResponseDto>).data
@@ -126,27 +127,52 @@ fun ScreenContent2(weatherResponseDto: WeatherResponseDto?,navController: NavCon
             verticalArrangement = Arrangement.spacedBy(25.dp),
 
             ) {
+
+
             // 1) Header
             Row(
-                modifier = Modifier.fillMaxWidth().padding(all = 15.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().padding(all = 20.dp),
+                horizontalArrangement = Arrangement.spacedBy(40.dp),
                 verticalAlignment = Alignment.CenterVertically
 
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    text = "Back",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.offset(-60.dp)
+                        .clickable {
+
+                            val entity = weatherResponseDto?.toEntity()
+
+                            if (entity!=null)
+                                viewModel.saveWeather(entity)
+
+
+
+                            navController.navigate(Screens.SavedCitiesScreen.route) {
+//                                popUpTo("saved_cities_screen") { inclusive = true }
+                            }
+                        }
+                )
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
                     Icon(
                         painter = painterResource(R.drawable.pin1),
                         contentDescription = "location",
                         tint = Color.White,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(20.dp).offset(-10.dp)
+
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
                         text = weatherResponseDto?.location?.name ?: "",
                         color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.offset(-10.dp)
+
                     )
                 }
 
@@ -156,7 +182,7 @@ fun ScreenContent2(weatherResponseDto: WeatherResponseDto?,navController: NavCon
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier
+                    modifier = Modifier.offset(50.dp)
                         .clickable {
 
                             val entity = weatherResponseDto?.toEntity()
@@ -167,7 +193,7 @@ fun ScreenContent2(weatherResponseDto: WeatherResponseDto?,navController: NavCon
 
 
                             navController.navigate("saved_cities_screen") {
-                                popUpTo("saved_cities_screen") { inclusive = true }
+//                                popUpTo("saved_cities_screen") { inclusive = true }
                             }
                         }
                 )

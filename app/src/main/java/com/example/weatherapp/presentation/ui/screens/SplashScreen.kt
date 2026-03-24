@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -23,13 +24,13 @@ import kotlinx.coroutines.delay
 
 
 @Composable
-fun SplashScreen (navController: NavController
+fun SplashScreen (navController: NavController?
 
 ) {
     LaunchedEffect(key1=true) {
 
         delay(2000)
-        navController.navigate("${Screens.HomeScreen.route}")
+        navController?.navigate("${Screens.HomeScreen.route}")
         {
             popUpTo("splash_screen"){inclusive=true}
         }
@@ -69,6 +70,12 @@ fun SplashScreen (navController: NavController
 
         }
     }
+}
+
+@Preview
+@Composable
+fun SplashScreenPreview() {
+    SplashScreen(null)
 }
 
 

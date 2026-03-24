@@ -1,9 +1,9 @@
 package com.example.weatherapp.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 
-import com.example.weatherapp.data.data_source.db.ktor.dto.SearchResponseItem
+import com.example.weatherapp.data.data_source.remote.ktor.dto.SearchResponseItem
 import com.example.weatherapp.domain.models.WeatherResponse
 import com.example.weatherapp.presentation.util.Resource
 

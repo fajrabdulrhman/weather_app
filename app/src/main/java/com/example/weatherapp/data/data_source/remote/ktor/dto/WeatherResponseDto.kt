@@ -1,4 +1,4 @@
-package com.example.weatherapp.data.data_source.db.ktor.dto
+package com.example.weatherapp.data.data_source.remote.ktor.dto
 
 import android.annotation.SuppressLint
 import com.example.weatherapp.domain.models.Current

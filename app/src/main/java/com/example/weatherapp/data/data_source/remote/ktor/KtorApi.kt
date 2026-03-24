@@ -1,8 +1,8 @@
-package com.example.weatherapp.data.data_source.db.ktor
+package com.example.weatherapp.data.data_source.remote.ktor
 
-import com.example.weatherapp.data.data_source.db.ktor.dto.WeatherResponseDto
+import com.example.weatherapp.data.data_source.remote.ktor.dto.WeatherResponseDto
 
-import com.example.weatherapp.data.data_source.db.ktor.dto.SearchResponseItem
+import com.example.weatherapp.data.data_source.remote.ktor.dto.SearchResponseItem
 import com.example.weatherapp.presentation.util.Resource
 
 interface KtorApi {
